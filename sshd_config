@@ -1,0 +1,7 @@
+Match User sftp_user
+ X11Forwarding no
+ AllowTcpForwarding no
+ ForceCommand internal-sftp
+ ChrootDirectory /opt/docker/code
+ PermitTTY no
+

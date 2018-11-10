@@ -1,0 +1,29 @@
+Host * !10.0.1.5 !opmpmd* !build1
+ ControlMaster auto
+ ControlPath ~/.ssh/cm_socket/%r@%h-%p
+ ControlPersist 600
+ StrictHostKeyChecking no
+ UserKnownHostsFile=/dev/null
+ ServerAliveInterval 150
+ ServerAliveCountMax 25
+
+Host do
+ HostName XXXXX
+ Port XXXXX
+ User XXXXX
+ ProxyCommand ssh -W %h:%p -i /home/XXXXX/.ssh/id_rsa-home -l XXXXX -p 22 ssh_jump_host
+
+Host home
+ User XXXXX
+ IdentityFile /home/XXXXX/.ssh/id_rsa-home
+
+Host 10.0.1.5
+ ControlMaster no
+ ControlPath none
+ StrictHostKeyChecking no
+ UserKnownHostsFile=/dev/null
+ ServerAliveInterval 30
+ ServerAliveCountMax 5
+ User klyuevmv
+
+
